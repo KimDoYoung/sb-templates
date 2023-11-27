@@ -1,4 +1,4 @@
-# sbtemplates
+# sbtemplates - exception
 
 ### 작업
 1. error.jsp를 넣음
