@@ -6,10 +6,13 @@ plugins {
 
 group = 'kr.co.kalpa'
 version = '0.0.1-SNAPSHOT'
+compileJava.options.encoding = 'UTF-8'
 
 java {
-	sourceCompatibility = '21'
+	sourceCompatibility = '17'
 }
+
+
 
 configurations {
 	compileOnly {
@@ -22,6 +25,7 @@ repositories {
 }
 
 dependencies {
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.10'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

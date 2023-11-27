@@ -8,5 +8,9 @@
 </head>
 <body>
 <h1>TEST</h1>
+<a href="/exception">throw new Exception</a> <br/>
+<a href="/assetedu/exception">throw new AssetEduException</a> <br/>
+<a href="/assetedu/exception-json">throw new AssetEduJsonException : json형태로 error를 리턴</a> <br/>
+<a href="/assetedu/exception-duplication-json">Json형태로 Duplicaton 에러를 보낸다</a> <br/>
 </body>
 </html>
