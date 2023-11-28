@@ -34,11 +34,18 @@ public class MainController {
 	}
 
 	@GetMapping("/assetedu/define-exception-in-method")
-	@ExceptionHandler(value = AssetEduJsonException.class)
+	//@ExceptionHandler(value = AssetEduJsonException.class)
 	public String asseteduexceptionjson2() throws Exception {
 		
-		throw new Exception("controller의 method 즉 특정 path에 특정 exception을 기술");
-		
+		//throw new Exception("controller의 method 즉 특정 path에 특정 exception을 기술");
+		try {
+			
+			Integer.parseInt("a");
+			return null;
+			
+		} catch (Exception e) {
+			throw new AssetEduJsonException(e.getMessage());
+		}
 	}
 
 	
