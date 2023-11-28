@@ -13,5 +13,6 @@
 <a href="/assetedu/exception-json">throw new AssetEduJsonException : json형태로 error를 리턴</a> <br/>
 <a href="/assetedu/exception-duplication-json">Json형태로 Duplicaton 에러를 보낸다</a> <br/>
 <a href="/assetedu/define-exception-in-method">콘트롤러의 method에 특정 exception을 기술</a> <br/>
+<a href="/assetedu/define-exception-in-controller">콘트롤러안에  exception을 기술</a> <br/>
 </body>
 </html>

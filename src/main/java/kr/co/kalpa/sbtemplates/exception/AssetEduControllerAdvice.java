@@ -17,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 public class AssetEduControllerAdvice  {
 	
 	 private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
-
 	 
 	@ExceptionHandler(AssetEduException.class)
     public ModelAndView assetEduException1(AssetEduException e, HttpServletRequest request) {
