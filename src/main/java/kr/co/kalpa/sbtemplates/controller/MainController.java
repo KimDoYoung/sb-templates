@@ -1,6 +1,7 @@
 package kr.co.kalpa.sbtemplates.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.kalpa.sbtemplates.exception.AssetEduException;
@@ -31,4 +32,14 @@ public class MainController {
 	public String asseteduexceptionjson1() throws Exception {
 		throw new AssetEduJsonException("이미 존재하는 데이터입니다. - duplication in json");
 	}
+
+	@GetMapping("/assetedu/define-exception-in-method")
+	@ExceptionHandler(value = AssetEduJsonException.class)
+	public String asseteduexceptionjson2() throws Exception {
+		
+		throw new Exception("controller의 method 즉 특정 path에 특정 exception을 기술");
+		
+	}
+
+	
 }
