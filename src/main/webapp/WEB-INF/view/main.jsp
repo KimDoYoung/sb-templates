@@ -17,5 +17,7 @@
 ${map.name } : ${map.email }
 <br/>
 id:${user.username }, pw: ${user.password }
+<br/>
+${address }
 </body>
 </html>
