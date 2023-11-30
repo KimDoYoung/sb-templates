@@ -33,6 +33,9 @@ dependencies {
 	//spring boot 3.0부터
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	//implementation 'javax.servlet:jstl'
+	
+	// log4j2
+	implementation group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 }
 
 tasks.named('test') {
