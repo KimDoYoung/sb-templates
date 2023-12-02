@@ -9,6 +9,7 @@ import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,26 +20,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CustomErrorController extends AbstractErrorController {
 
-	//private final ErrorAttributes errorAttributes;
 	@Value("${server.error.path:${error.path:/error}}")
 	private String ERROR_PATH;
 	
-
-	
 	public CustomErrorController(ErrorAttributes errorAttributes) {
 		super(errorAttributes);
-		//this.errorAttributes = errorAttributes;
 	}
 	private boolean isAjax(HttpServletRequest request) {
 	    String requestedWithHeader = request.getHeader("X-Requested-With");
 	    return "XMLHttpRequest".equals(requestedWithHeader);
 	}
-	//@RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
 	@RequestMapping("/error")
-	public String error(HttpServletRequest request, Model model) {
+	public ModelAndView error(HttpServletRequest request, Model model) {
 		
+		ModelAndView mav = null ;
 		if(isAjax(request)) {
 			System.out.println("이것은 ajax request...................");
+			mav = new ModelAndView(new kr.co.kalpa.sbtemplates.view.JsonView());
+		}else {
+			mav = new ModelAndView("/error");
 		}
 		
 		String msg = null;
@@ -48,7 +48,6 @@ public class CustomErrorController extends AbstractErrorController {
 			msg = msg.substring(msg.lastIndexOf(":")+1);
 		}
 			
-        //ServletWebRequest servletWebRequest = new ServletWebRequest(request);
         ErrorAttributeOptions options = ErrorAttributeOptions
         	    .defaults()
         	    .including(ErrorAttributeOptions.Include.STACK_TRACE)
@@ -58,16 +57,22 @@ public class CustomErrorController extends AbstractErrorController {
 		errorAttributes.forEach((attribute, value) -> {			
 			log.debug("attribute : {}, value:{}", attribute, value);
 		});
-		model.addAttribute("timestamp", errorAttributes.get("timestamp"));
-		model.addAttribute("status", errorAttributes.get("status"));
-		model.addAttribute("error", errorAttributes.get("error"));
-		model.addAttribute("path", errorAttributes.get("path"));
-		model.addAttribute("trace", errorAttributes.get("trace"));
-		model.addAttribute("msg", msg);
+//		model.addAttribute("timestamp", errorAttributes.get("timestamp"));
+//		model.addAttribute("status", errorAttributes.get("status"));
+//		model.addAttribute("error", errorAttributes.get("error"));
+//		model.addAttribute("path", errorAttributes.get("path"));
+//		model.addAttribute("trace", errorAttributes.get("trace"));
+//		model.addAttribute("msg", msg);
+		mav.addObject("timestamp", errorAttributes.get("timestamp"));
+		mav.addObject("status", errorAttributes.get("status"));
+		mav.addObject("error", errorAttributes.get("error"));
+		mav.addObject("path", errorAttributes.get("path"));
+		mav.addObject("trace", errorAttributes.get("trace"));
+		mav.addObject("msg", msg);
 		log.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 
         
-		return "error";
+		return mav;
 		
 	}
 

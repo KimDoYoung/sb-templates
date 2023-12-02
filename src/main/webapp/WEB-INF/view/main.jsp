@@ -11,7 +11,7 @@
 <a href="/exception1"><strong>not</strong> controlled exception (ex: parseInt error)</a><br>
 <a href="/exception2">controlled exception (ex: parseInt error)</a><br>
 <a href="#" id="ajax1">ajax-1</a>
-
+<div id="result"></div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
@@ -20,7 +20,8 @@ $(document).ready(function(){
 		$.get('/exception-ajax1', function(data){
 			console.log(data);
 		}).fail(function(jqXHR, textStatus, errorThrown){
-			console.log(errorThrown);
+			console.log(jqXHR.responseJSON.msg);
+			$('#result').text(JSON.stringify(jqXHR.responseJSON));
 		});
 	});
 });
