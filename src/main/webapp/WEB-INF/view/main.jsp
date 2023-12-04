@@ -8,5 +8,12 @@
 </head>
 <body>
 <h1>TEST</h1>
+<form action="/user" method="get">
+<input type="text" name="id" />
+<input type="text" name="name" />
+
+<button type="submit">submit</button>
+</form>
+
 </body>
 </html>
