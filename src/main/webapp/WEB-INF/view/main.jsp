@@ -8,5 +8,12 @@
 </head>
 <body>
 <h1>TEST</h1>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+	console.log('ready...');
+});
+</script>
 </body>
 </html>
