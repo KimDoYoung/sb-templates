@@ -1,6 +1,7 @@
 package kr.co.kalpa.sbtemplates.model;
 
 
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
