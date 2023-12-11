@@ -8,7 +8,7 @@ group = 'kr.co.kalpa'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '21'
+	sourceCompatibility = '17'
 }
 
 configurations {
@@ -28,11 +28,12 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
-	//jsp, jstl	
-	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
-	//spring boot 3.0부터
-	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
-	//implementation 'javax.servlet:jstl'
+	// spring-boot-starter-mustache
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mustache', version: '3.2.0'
+	
+	// spring-boot-starter-security
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.2.0'
+	
 }
 
 tasks.named('test') {

@@ -1,21 +1,30 @@
-# sbtemplates
+# sb-templates
 
-## 목적
-Springboot로 프로젝트를 만들때 framework 구성을 각 주제별로 테스트
+## 
+-JDK 17로 설정
+-mustache를 view로 설정
+-spring security를 포함함.
 
-- 현재 main branch는 jsp페이지를 띄울 수 있게 해놓음
+## build.gradle
+```
+// spring-boot-starter-mustache
+implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mustache', version: '3.2.0'
+	
+// spring-boot-starter-security
+implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.2.0'
 
-### 구성
+implementation 'org.springframework.boot:spring-boot-starter-mustache'	
+```	
 
-* jdk 21
-* STS Version: 4.20.1.RELEASE
-* jsp 사용
+## application.properties
 
+```
+# security
+spring.security.user.name=admin
+spring.security.user.password=1111
 
-### 설명
+spring.mustache.suffix:.html
 
-1. build.gradle 에 jsp를 사용하도록 설정
-2. application.properties에 jsp위치 지정
-3. MainController.java작성
-4. main.jsp작성
-
+spring.mustache.prefix=classpath:/templates/
+spring.mustache.suffix=.mustache
+```
