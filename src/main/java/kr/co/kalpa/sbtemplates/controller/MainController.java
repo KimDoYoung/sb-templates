@@ -15,6 +15,5 @@ public class MainController {
 		log.debug("Main...");
 		log.debug("****************************************");
 		return "main";
-		
 	}
 }
